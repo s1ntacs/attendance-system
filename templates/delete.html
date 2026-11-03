@@ -1,0 +1,1 @@
+{% extends 'base.html' %}{% block content %}<h1>Удаление занятия</h1><p>Удалить «{{lesson.topic}}» и все его отметки? Действие необратимо.</p><form method='post'>{% csrf_token %}<button name='confirm' value='yes'>Подтвердить удаление</button> <a href='/'>Отмена</a></form>{% endblock %}

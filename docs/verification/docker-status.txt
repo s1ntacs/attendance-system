@@ -1,0 +1,3 @@
+NAME                      IMAGE                   COMMAND                  SERVICE   CREATED         STATUS                   PORTS
+attendance-system-db-1    postgres:17-alpine      "docker-entrypoint.s…"   db        5 minutes ago   Up 5 minutes (healthy)   5432/tcp
+attendance-system-web-1   attendance-system-web   "sh -c 'python manag…"   web       5 minutes ago   Up 5 minutes (healthy)   127.0.0.1:8000->8000/tcp

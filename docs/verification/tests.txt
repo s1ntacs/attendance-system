@@ -1,0 +1,58 @@
+Found 26 test(s).
+Creating test database for alias 'default' ('test_attendance')...
+Operations to perform:
+  Synchronize unmigrated apps: messages, rest_framework, staticfiles
+  Apply all migrations: auth, contenttypes, journal, sessions
+Synchronizing apps without migrations:
+  Creating tables...
+    Running deferred SQL...
+Running migrations:
+  Applying contenttypes.0001_initial... OK
+  Applying contenttypes.0002_remove_content_type_name... OK
+  Applying auth.0001_initial... OK
+  Applying auth.0002_alter_permission_name_max_length... OK
+  Applying auth.0003_alter_user_email_max_length... OK
+  Applying auth.0004_alter_user_username_opts... OK
+  Applying auth.0005_alter_user_last_login_null... OK
+  Applying auth.0006_require_contenttypes_0002... OK
+  Applying auth.0007_alter_validators_add_error_messages... OK
+  Applying auth.0008_alter_user_username_max_length... OK
+  Applying auth.0009_alter_user_last_name_max_length... OK
+  Applying auth.0010_alter_group_name_max_length... OK
+  Applying auth.0011_update_proxy_permissions... OK
+  Applying auth.0012_alter_user_first_name_max_length... OK
+  Applying journal.0001_initial... OK
+  Applying sessions.0001_initial... OK
+System check identified no issues (0 silenced).
+test_anonymous_cannot_read (journal.tests.JournalTests.test_anonymous_cannot_read) ... ok
+test_assignment_cannot_change_after_lessons (journal.tests.JournalTests.test_assignment_cannot_change_after_lessons) ... ok
+test_catalog_crud_admin (journal.tests.JournalTests.test_catalog_crud_admin) ... ok
+test_delete_lesson_requires_confirmation_and_cascades (journal.tests.JournalTests.test_delete_lesson_requires_confirmation_and_cascades) ... ok
+test_duplicate_mark_rejected_and_patch_works (journal.tests.JournalTests.test_duplicate_mark_rejected_and_patch_works) ... ok
+test_empty_statistics (journal.tests.JournalTests.test_empty_statistics) ... ok
+test_four_lesson_screens (journal.tests.JournalTests.test_four_lesson_screens) ... ok
+test_html_invalid_batch_is_atomic (journal.tests.JournalTests.test_html_invalid_batch_is_atomic) ... ok
+test_html_repeat_save_does_not_duplicate (journal.tests.JournalTests.test_html_repeat_save_does_not_duplicate) ... ok
+test_invalid_status_rejected (journal.tests.JournalTests.test_invalid_status_rejected) ... ok
+test_lesson_crud (journal.tests.JournalTests.test_lesson_crud) ... ok
+test_login_and_logout (journal.tests.JournalTests.test_login_and_logout) ... ok
+test_login_csrf_required (journal.tests.JournalTests.test_login_csrf_required) ... ok
+test_password_is_hashed (journal.tests.JournalTests.test_password_is_hashed) ... ok
+test_protected_group_deletion (journal.tests.JournalTests.test_protected_group_deletion) ... ok
+test_registration_cannot_choose_role (journal.tests.JournalTests.test_registration_cannot_choose_role) ... ok
+test_role_cannot_break_assignment (journal.tests.JournalTests.test_role_cannot_break_assignment) ... ok
+test_session_api_csrf_required (journal.tests.JournalTests.test_session_api_csrf_required) ... ok
+test_statistics_does_not_count_unmarked (journal.tests.JournalTests.test_statistics_does_not_count_unmarked) ... ok
+test_student_cannot_be_moved_after_marks (journal.tests.JournalTests.test_student_cannot_be_moved_after_marks) ... ok
+test_student_cannot_read_other_marks (journal.tests.JournalTests.test_student_cannot_read_other_marks) ... ok
+test_student_read_only (journal.tests.JournalTests.test_student_read_only) ... ok
+test_teacher_cannot_create_foreign_lesson (journal.tests.JournalTests.test_teacher_cannot_create_foreign_lesson) ... ok
+test_teacher_cannot_manage_users (journal.tests.JournalTests.test_teacher_cannot_manage_users) ... ok
+test_teacher_only_own_lessons (journal.tests.JournalTests.test_teacher_only_own_lessons) ... ok
+test_wrong_group_rejected (journal.tests.JournalTests.test_wrong_group_rejected) ... ok
+
+----------------------------------------------------------------------
+Ran 26 tests in 1.025s
+
+OK
+Destroying test database for alias 'default' ('test_attendance')...
