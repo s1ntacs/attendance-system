@@ -1,0 +1,1442 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Attendance API",
+    "version": "0.2.0",
+    "description": "Каталог методов. Session cookie + CSRF для изменяющих запросов. Форматы полей: endpoints.md."
+  },
+  "servers": [
+    {
+      "url": "http://localhost:8000"
+    }
+  ],
+  "security": [
+    {
+      "sessionAuth": []
+    }
+  ],
+  "components": {
+    "securitySchemes": {
+      "sessionAuth": {
+        "type": "apiKey",
+        "in": "cookie",
+        "name": "sessionid"
+      }
+    }
+  },
+  "paths": {
+    "/api/users/": {
+      "get": {
+        "summary": "список: пользователи",
+        "responses": {
+          "200": {
+            "description": "Успех"
+          },
+          "400": {
+            "description": "Ошибка данных"
+          },
+          "403": {
+            "description": "Нет доступа или CSRF"
+          },
+          "404": {
+            "description": "Не найдено или недоступно"
+          },
+          "409": {
+            "description": "Конфликт связей / требуется подтверждение"
+          }
+        }
+      },
+      "post": {
+        "summary": "создать: пользователи",
+        "responses": {
+          "201": {
+            "description": "Успех"
+          },
+          "400": {
+            "description": "Ошибка данных"
+          },
+          "403": {
+            "description": "Нет доступа или CSRF"
+          },
+          "404": {
+            "description": "Не найдено или недоступно"
+          },
+          "409": {
+            "description": "Конфликт связей / требуется подтверждение"
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "description": "Поля перечислены в разделе форматов docs/api/endpoints.md"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/users/{id}/": {
+      "get": {
+        "summary": "получить одну запись: пользователи",
+        "responses": {
+          "200": {
+            "description": "Успех"
+          },
+          "400": {
+            "description": "Ошибка данных"
+          },
+          "403": {
+            "description": "Нет доступа или CSRF"
+          },
+          "404": {
+            "description": "Не найдено или недоступно"
+          },
+          "409": {
+            "description": "Конфликт связей / требуется подтверждение"
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ]
+      },
+      "put": {
+        "summary": "полностью обновить: пользователи",
+        "responses": {
+          "200": {
+            "description": "Успех"
+          },
+          "400": {
+            "description": "Ошибка данных"
+          },
+          "403": {
+            "description": "Нет доступа или CSRF"
+          },
+          "404": {
+            "description": "Не найдено или недоступно"
+          },
+          "409": {
+            "description": "Конфликт связей / требуется подтверждение"
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "description": "Поля перечислены в разделе форматов docs/api/endpoints.md"
+              }
+            }
+          }
+        }
+      },
+      "patch": {
+        "summary": "частично обновить: пользователи",
+        "responses": {
+          "200": {
+            "description": "Успех"
+          },
+          "400": {
+            "description": "Ошибка данных"
+          },
+          "403": {
+            "description": "Нет доступа или CSRF"
+          },
+          "404": {
+            "description": "Не найдено или недоступно"
+          },
+          "409": {
+            "description": "Конфликт связей / требуется подтверждение"
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "description": "Поля перечислены в разделе форматов docs/api/endpoints.md"
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "удалить: пользователи",
+        "responses": {
+          "204": {
+            "description": "Успех"
+          },
+          "400": {
+            "description": "Ошибка данных"
+          },
+          "403": {
+            "description": "Нет доступа или CSRF"
+          },
+          "404": {
+            "description": "Не найдено или недоступно"
+          },
+          "409": {
+            "description": "Конфликт связей / требуется подтверждение"
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ]
+      }
+    },
+    "/api/groups/": {
+      "get": {
+        "summary": "список: группы",
+        "responses": {
+          "200": {
+            "description": "Успех"
+          },
+          "400": {
+            "description": "Ошибка данных"
+          },
+          "403": {
+            "description": "Нет доступа или CSRF"
+          },
+          "404": {
+            "description": "Не найдено или недоступно"
+          },
+          "409": {
+            "description": "Конфликт связей / требуется подтверждение"
+          }
+        }
+      },
+      "post": {
+        "summary": "создать: группы",
+        "responses": {
+          "201": {
+            "description": "Успех"
+          },
+          "400": {
+            "description": "Ошибка данных"
+          },
+          "403": {
+            "description": "Нет доступа или CSRF"
+          },
+          "404": {
+            "description": "Не найдено или недоступно"
+          },
+          "409": {
+            "description": "Конфликт связей / требуется подтверждение"
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "description": "Поля перечислены в разделе форматов docs/api/endpoints.md"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/groups/{id}/": {
+      "get": {
+        "summary": "получить одну запись: группы",
+        "responses": {
+          "200": {
+            "description": "Успех"
+          },
+          "400": {
+            "description": "Ошибка данных"
+          },
+          "403": {
+            "description": "Нет доступа или CSRF"
+          },
+          "404": {
+            "description": "Не найдено или недоступно"
+          },
+          "409": {
+            "description": "Конфликт связей / требуется подтверждение"
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ]
+      },
+      "put": {
+        "summary": "полностью обновить: группы",
+        "responses": {
+          "200": {
+            "description": "Успех"
+          },
+          "400": {
+            "description": "Ошибка данных"
+          },
+          "403": {
+            "description": "Нет доступа или CSRF"
+          },
+          "404": {
+            "description": "Не найдено или недоступно"
+          },
+          "409": {
+            "description": "Конфликт связей / требуется подтверждение"
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "description": "Поля перечислены в разделе форматов docs/api/endpoints.md"
+              }
+            }
+          }
+        }
+      },
+      "patch": {
+        "summary": "частично обновить: группы",
+        "responses": {
+          "200": {
+            "description": "Успех"
+          },
+          "400": {
+            "description": "Ошибка данных"
+          },
+          "403": {
+            "description": "Нет доступа или CSRF"
+          },
+          "404": {
+            "description": "Не найдено или недоступно"
+          },
+          "409": {
+            "description": "Конфликт связей / требуется подтверждение"
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "description": "Поля перечислены в разделе форматов docs/api/endpoints.md"
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "удалить: группы",
+        "responses": {
+          "204": {
+            "description": "Успех"
+          },
+          "400": {
+            "description": "Ошибка данных"
+          },
+          "403": {
+            "description": "Нет доступа или CSRF"
+          },
+          "404": {
+            "description": "Не найдено или недоступно"
+          },
+          "409": {
+            "description": "Конфликт связей / требуется подтверждение"
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ]
+      }
+    },
+    "/api/students/": {
+      "get": {
+        "summary": "список: профили студентов",
+        "responses": {
+          "200": {
+            "description": "Успех"
+          },
+          "400": {
+            "description": "Ошибка данных"
+          },
+          "403": {
+            "description": "Нет доступа или CSRF"
+          },
+          "404": {
+            "description": "Не найдено или недоступно"
+          },
+          "409": {
+            "description": "Конфликт связей / требуется подтверждение"
+          }
+        }
+      },
+      "post": {
+        "summary": "создать: профили студентов",
+        "responses": {
+          "201": {
+            "description": "Успех"
+          },
+          "400": {
+            "description": "Ошибка данных"
+          },
+          "403": {
+            "description": "Нет доступа или CSRF"
+          },
+          "404": {
+            "description": "Не найдено или недоступно"
+          },
+          "409": {
+            "description": "Конфликт связей / требуется подтверждение"
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "description": "Поля перечислены в разделе форматов docs/api/endpoints.md"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/students/{id}/": {
+      "get": {
+        "summary": "получить одну запись: профили студентов",
+        "responses": {
+          "200": {
+            "description": "Успех"
+          },
+          "400": {
+            "description": "Ошибка данных"
+          },
+          "403": {
+            "description": "Нет доступа или CSRF"
+          },
+          "404": {
+            "description": "Не найдено или недоступно"
+          },
+          "409": {
+            "description": "Конфликт связей / требуется подтверждение"
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ]
+      },
+      "put": {
+        "summary": "полностью обновить: профили студентов",
+        "responses": {
+          "200": {
+            "description": "Успех"
+          },
+          "400": {
+            "description": "Ошибка данных"
+          },
+          "403": {
+            "description": "Нет доступа или CSRF"
+          },
+          "404": {
+            "description": "Не найдено или недоступно"
+          },
+          "409": {
+            "description": "Конфликт связей / требуется подтверждение"
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "description": "Поля перечислены в разделе форматов docs/api/endpoints.md"
+              }
+            }
+          }
+        }
+      },
+      "patch": {
+        "summary": "частично обновить: профили студентов",
+        "responses": {
+          "200": {
+            "description": "Успех"
+          },
+          "400": {
+            "description": "Ошибка данных"
+          },
+          "403": {
+            "description": "Нет доступа или CSRF"
+          },
+          "404": {
+            "description": "Не найдено или недоступно"
+          },
+          "409": {
+            "description": "Конфликт связей / требуется подтверждение"
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "description": "Поля перечислены в разделе форматов docs/api/endpoints.md"
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "удалить: профили студентов",
+        "responses": {
+          "204": {
+            "description": "Успех"
+          },
+          "400": {
+            "description": "Ошибка данных"
+          },
+          "403": {
+            "description": "Нет доступа или CSRF"
+          },
+          "404": {
+            "description": "Не найдено или недоступно"
+          },
+          "409": {
+            "description": "Конфликт связей / требуется подтверждение"
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ]
+      }
+    },
+    "/api/subjects/": {
+      "get": {
+        "summary": "список: дисциплины",
+        "responses": {
+          "200": {
+            "description": "Успех"
+          },
+          "400": {
+            "description": "Ошибка данных"
+          },
+          "403": {
+            "description": "Нет доступа или CSRF"
+          },
+          "404": {
+            "description": "Не найдено или недоступно"
+          },
+          "409": {
+            "description": "Конфликт связей / требуется подтверждение"
+          }
+        }
+      },
+      "post": {
+        "summary": "создать: дисциплины",
+        "responses": {
+          "201": {
+            "description": "Успех"
+          },
+          "400": {
+            "description": "Ошибка данных"
+          },
+          "403": {
+            "description": "Нет доступа или CSRF"
+          },
+          "404": {
+            "description": "Не найдено или недоступно"
+          },
+          "409": {
+            "description": "Конфликт связей / требуется подтверждение"
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "description": "Поля перечислены в разделе форматов docs/api/endpoints.md"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/subjects/{id}/": {
+      "get": {
+        "summary": "получить одну запись: дисциплины",
+        "responses": {
+          "200": {
+            "description": "Успех"
+          },
+          "400": {
+            "description": "Ошибка данных"
+          },
+          "403": {
+            "description": "Нет доступа или CSRF"
+          },
+          "404": {
+            "description": "Не найдено или недоступно"
+          },
+          "409": {
+            "description": "Конфликт связей / требуется подтверждение"
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ]
+      },
+      "put": {
+        "summary": "полностью обновить: дисциплины",
+        "responses": {
+          "200": {
+            "description": "Успех"
+          },
+          "400": {
+            "description": "Ошибка данных"
+          },
+          "403": {
+            "description": "Нет доступа или CSRF"
+          },
+          "404": {
+            "description": "Не найдено или недоступно"
+          },
+          "409": {
+            "description": "Конфликт связей / требуется подтверждение"
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "description": "Поля перечислены в разделе форматов docs/api/endpoints.md"
+              }
+            }
+          }
+        }
+      },
+      "patch": {
+        "summary": "частично обновить: дисциплины",
+        "responses": {
+          "200": {
+            "description": "Успех"
+          },
+          "400": {
+            "description": "Ошибка данных"
+          },
+          "403": {
+            "description": "Нет доступа или CSRF"
+          },
+          "404": {
+            "description": "Не найдено или недоступно"
+          },
+          "409": {
+            "description": "Конфликт связей / требуется подтверждение"
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "description": "Поля перечислены в разделе форматов docs/api/endpoints.md"
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "удалить: дисциплины",
+        "responses": {
+          "204": {
+            "description": "Успех"
+          },
+          "400": {
+            "description": "Ошибка данных"
+          },
+          "403": {
+            "description": "Нет доступа или CSRF"
+          },
+          "404": {
+            "description": "Не найдено или недоступно"
+          },
+          "409": {
+            "description": "Конфликт связей / требуется подтверждение"
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ]
+      }
+    },
+    "/api/assignments/": {
+      "get": {
+        "summary": "список: назначения преподавателей",
+        "responses": {
+          "200": {
+            "description": "Успех"
+          },
+          "400": {
+            "description": "Ошибка данных"
+          },
+          "403": {
+            "description": "Нет доступа или CSRF"
+          },
+          "404": {
+            "description": "Не найдено или недоступно"
+          },
+          "409": {
+            "description": "Конфликт связей / требуется подтверждение"
+          }
+        }
+      },
+      "post": {
+        "summary": "создать: назначения преподавателей",
+        "responses": {
+          "201": {
+            "description": "Успех"
+          },
+          "400": {
+            "description": "Ошибка данных"
+          },
+          "403": {
+            "description": "Нет доступа или CSRF"
+          },
+          "404": {
+            "description": "Не найдено или недоступно"
+          },
+          "409": {
+            "description": "Конфликт связей / требуется подтверждение"
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "description": "Поля перечислены в разделе форматов docs/api/endpoints.md"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/assignments/{id}/": {
+      "get": {
+        "summary": "получить одну запись: назначения преподавателей",
+        "responses": {
+          "200": {
+            "description": "Успех"
+          },
+          "400": {
+            "description": "Ошибка данных"
+          },
+          "403": {
+            "description": "Нет доступа или CSRF"
+          },
+          "404": {
+            "description": "Не найдено или недоступно"
+          },
+          "409": {
+            "description": "Конфликт связей / требуется подтверждение"
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ]
+      },
+      "put": {
+        "summary": "полностью обновить: назначения преподавателей",
+        "responses": {
+          "200": {
+            "description": "Успех"
+          },
+          "400": {
+            "description": "Ошибка данных"
+          },
+          "403": {
+            "description": "Нет доступа или CSRF"
+          },
+          "404": {
+            "description": "Не найдено или недоступно"
+          },
+          "409": {
+            "description": "Конфликт связей / требуется подтверждение"
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "description": "Поля перечислены в разделе форматов docs/api/endpoints.md"
+              }
+            }
+          }
+        }
+      },
+      "patch": {
+        "summary": "частично обновить: назначения преподавателей",
+        "responses": {
+          "200": {
+            "description": "Успех"
+          },
+          "400": {
+            "description": "Ошибка данных"
+          },
+          "403": {
+            "description": "Нет доступа или CSRF"
+          },
+          "404": {
+            "description": "Не найдено или недоступно"
+          },
+          "409": {
+            "description": "Конфликт связей / требуется подтверждение"
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "description": "Поля перечислены в разделе форматов docs/api/endpoints.md"
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "удалить: назначения преподавателей",
+        "responses": {
+          "204": {
+            "description": "Успех"
+          },
+          "400": {
+            "description": "Ошибка данных"
+          },
+          "403": {
+            "description": "Нет доступа или CSRF"
+          },
+          "404": {
+            "description": "Не найдено или недоступно"
+          },
+          "409": {
+            "description": "Конфликт связей / требуется подтверждение"
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ]
+      }
+    },
+    "/api/lessons/": {
+      "get": {
+        "summary": "список: занятия",
+        "responses": {
+          "200": {
+            "description": "Успех"
+          },
+          "400": {
+            "description": "Ошибка данных"
+          },
+          "403": {
+            "description": "Нет доступа или CSRF"
+          },
+          "404": {
+            "description": "Не найдено или недоступно"
+          },
+          "409": {
+            "description": "Конфликт связей / требуется подтверждение"
+          }
+        }
+      },
+      "post": {
+        "summary": "создать: занятия",
+        "responses": {
+          "201": {
+            "description": "Успех"
+          },
+          "400": {
+            "description": "Ошибка данных"
+          },
+          "403": {
+            "description": "Нет доступа или CSRF"
+          },
+          "404": {
+            "description": "Не найдено или недоступно"
+          },
+          "409": {
+            "description": "Конфликт связей / требуется подтверждение"
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "description": "Поля перечислены в разделе форматов docs/api/endpoints.md"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/lessons/{id}/": {
+      "get": {
+        "summary": "получить одну запись: занятия",
+        "responses": {
+          "200": {
+            "description": "Успех"
+          },
+          "400": {
+            "description": "Ошибка данных"
+          },
+          "403": {
+            "description": "Нет доступа или CSRF"
+          },
+          "404": {
+            "description": "Не найдено или недоступно"
+          },
+          "409": {
+            "description": "Конфликт связей / требуется подтверждение"
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ]
+      },
+      "put": {
+        "summary": "полностью обновить: занятия",
+        "responses": {
+          "200": {
+            "description": "Успех"
+          },
+          "400": {
+            "description": "Ошибка данных"
+          },
+          "403": {
+            "description": "Нет доступа или CSRF"
+          },
+          "404": {
+            "description": "Не найдено или недоступно"
+          },
+          "409": {
+            "description": "Конфликт связей / требуется подтверждение"
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "description": "Поля перечислены в разделе форматов docs/api/endpoints.md"
+              }
+            }
+          }
+        }
+      },
+      "patch": {
+        "summary": "частично обновить: занятия",
+        "responses": {
+          "200": {
+            "description": "Успех"
+          },
+          "400": {
+            "description": "Ошибка данных"
+          },
+          "403": {
+            "description": "Нет доступа или CSRF"
+          },
+          "404": {
+            "description": "Не найдено или недоступно"
+          },
+          "409": {
+            "description": "Конфликт связей / требуется подтверждение"
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "description": "Поля перечислены в разделе форматов docs/api/endpoints.md"
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "удалить: занятия",
+        "responses": {
+          "204": {
+            "description": "Успех"
+          },
+          "400": {
+            "description": "Ошибка данных"
+          },
+          "403": {
+            "description": "Нет доступа или CSRF"
+          },
+          "404": {
+            "description": "Не найдено или недоступно"
+          },
+          "409": {
+            "description": "Конфликт связей / требуется подтверждение"
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "confirm",
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            },
+            "description": "true для удаления занятия с отметками"
+          }
+        ]
+      }
+    },
+    "/api/attendance/": {
+      "get": {
+        "summary": "список: отметки",
+        "responses": {
+          "200": {
+            "description": "Успех"
+          },
+          "400": {
+            "description": "Ошибка данных"
+          },
+          "403": {
+            "description": "Нет доступа или CSRF"
+          },
+          "404": {
+            "description": "Не найдено или недоступно"
+          },
+          "409": {
+            "description": "Конфликт связей / требуется подтверждение"
+          }
+        }
+      },
+      "post": {
+        "summary": "создать: отметки",
+        "responses": {
+          "201": {
+            "description": "Успех"
+          },
+          "400": {
+            "description": "Ошибка данных"
+          },
+          "403": {
+            "description": "Нет доступа или CSRF"
+          },
+          "404": {
+            "description": "Не найдено или недоступно"
+          },
+          "409": {
+            "description": "Конфликт связей / требуется подтверждение"
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "description": "Поля перечислены в разделе форматов docs/api/endpoints.md"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/attendance/{id}/": {
+      "get": {
+        "summary": "получить одну запись: отметки",
+        "responses": {
+          "200": {
+            "description": "Успех"
+          },
+          "400": {
+            "description": "Ошибка данных"
+          },
+          "403": {
+            "description": "Нет доступа или CSRF"
+          },
+          "404": {
+            "description": "Не найдено или недоступно"
+          },
+          "409": {
+            "description": "Конфликт связей / требуется подтверждение"
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ]
+      },
+      "put": {
+        "summary": "полностью обновить: отметки",
+        "responses": {
+          "200": {
+            "description": "Успех"
+          },
+          "400": {
+            "description": "Ошибка данных"
+          },
+          "403": {
+            "description": "Нет доступа или CSRF"
+          },
+          "404": {
+            "description": "Не найдено или недоступно"
+          },
+          "409": {
+            "description": "Конфликт связей / требуется подтверждение"
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "description": "Поля перечислены в разделе форматов docs/api/endpoints.md"
+              }
+            }
+          }
+        }
+      },
+      "patch": {
+        "summary": "частично обновить: отметки",
+        "responses": {
+          "200": {
+            "description": "Успех"
+          },
+          "400": {
+            "description": "Ошибка данных"
+          },
+          "403": {
+            "description": "Нет доступа или CSRF"
+          },
+          "404": {
+            "description": "Не найдено или недоступно"
+          },
+          "409": {
+            "description": "Конфликт связей / требуется подтверждение"
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "description": "Поля перечислены в разделе форматов docs/api/endpoints.md"
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "удалить: отметки",
+        "responses": {
+          "204": {
+            "description": "Успех"
+          },
+          "400": {
+            "description": "Ошибка данных"
+          },
+          "403": {
+            "description": "Нет доступа или CSRF"
+          },
+          "404": {
+            "description": "Не найдено или недоступно"
+          },
+          "409": {
+            "description": "Конфликт связей / требуется подтверждение"
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ]
+      }
+    },
+    "/api/me/": {
+      "get": {
+        "summary": "Текущий пользователь",
+        "responses": {
+          "200": {
+            "description": "Успех"
+          },
+          "403": {
+            "description": "Нет доступа"
+          }
+        }
+      }
+    },
+    "/api/stats/": {
+      "get": {
+        "summary": "Статистика",
+        "responses": {
+          "200": {
+            "description": "Успех"
+          },
+          "403": {
+            "description": "Нет доступа"
+          }
+        }
+      }
+    }
+  }
+}
